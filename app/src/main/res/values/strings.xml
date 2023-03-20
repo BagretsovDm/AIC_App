@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">AIC_app</string>
+    <string name="art">Art</string>
+    <string name="artworks">Artworks</string>
+    <string name="favorites">Favorites</string>
+    <string name="search">Search</string>
+    <string name="like">Like</string>
+    <string name="loading">Loading</string>
+    <string name="hint">Please enter author or title</string>
 </resources>
