@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/artworks">
+    <fragment
+        android:id="@+id/artworks"
+        android:name="com.example.aic_app.ui.fragments.artworks.ArtworksFragment"
+        android:label="fragment_artworks"
+        tools:layout="@layout/fragment_artworks" >
+        <action
+            android:id="@+id/action_artworks_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favorites"
+        android:name="com.example.aic_app.ui.fragments.favorites.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favorites_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/search"
+        android:name="com.example.aic_app.ui.fragments.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_search_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.aic_app.ui.fragments.details.ArtworkDetailFragment"
+        android:label="DetailsFragment" />
+</navigation>

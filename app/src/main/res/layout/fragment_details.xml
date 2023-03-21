@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/base_padding"
+        tools:context=".ui.fragments.details.ArtworkDetailFragment">
+
+        <ImageView
+            android:id="@+id/art_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/art"
+            tools:src="@drawable/test_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_margin="@dimen/base_padding"
+            android:id="@+id/favorite_btn"
+            app:layout_constraintEnd_toEndOf="@id/art_view"
+            app:layout_constraintTop_toTopOf="@id/art_view"
+            android:src="@drawable/round_like_false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/like" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/CustomArtTitleStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/art_view"
+            tools:text="Salome with the Head of Saint John the Baptist" />
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/CustomArtTitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/art_view"
+            app:layout_constraintStart_toStartOf="@id/art_view"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="c. 1639–42" />
+
+        <TextView
+            android:id="@+id/author"
+            style="@style/CustomAuthorStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/art_view"
+            app:layout_constraintStart_toStartOf="@id/art_view"
+            app:layout_constraintTop_toBottomOf="@id/date"
+            tools:text="Guido Reni Italian, 1575-1642" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
