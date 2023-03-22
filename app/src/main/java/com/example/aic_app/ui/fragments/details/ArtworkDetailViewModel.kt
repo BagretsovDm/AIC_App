@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.room.Database
+import com.example.aic_app.data.room.entities.FavoritesEntity
 import com.example.aic_app.repositories.LocalRepository
 import com.example.aic_app.repositories.NetworkRepository
 import com.example.aic_app.ui.model.Art
@@ -25,8 +25,11 @@ class ArtworkDetailViewModel @Inject constructor(
     private val _artwork = MutableLiveData<Art>()
     val artwork: LiveData<Art> = _artwork
 
-    fun fetchArtwork(id: Long) {
+    fun updateIsFavorite() {
+        _isFavorite.postValue(!_isFavorite.value!!)
+    }
 
+    fun fetchArtwork(id: Long) {
         viewModelScope.launch(Dispatchers.IO) {
             val art = try {
                 localRepository.getFavoriteById(id).toArt()
@@ -41,11 +44,27 @@ class ArtworkDetailViewModel @Inject constructor(
         }
     }
 
-    fun updateArt() {
-        val currentArt = artwork.value
-        val currentIsFavorite = isFavorite.value
-        _artwork.postValue(
-            currentArt?.copy(isFavorite = !currentIsFavorite!!)
-        )
+    fun addToFavorites() {
+        viewModelScope.launch(Dispatchers.IO) {
+            _artwork.value?.let {
+                FavoritesEntity.toFavoriteEntity(
+                    it.copy(isFavorite = true)
+                )
+            }?.let {
+                updateIsFavorite()
+                localRepository.addFavorite(
+                    it
+                )
+            }
+        }
+    }
+
+    fun removeFromFavorites() {
+        viewModelScope.launch(Dispatchers.IO) {
+            _artwork.value?.let {
+                updateIsFavorite()
+                localRepository.deleteFavorite(it.id)
+            }
+        }
     }
 }

@@ -23,12 +23,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <ImageButton
+            android:background="@drawable/selector_favorites"
             android:layout_margin="@dimen/base_padding"
             android:id="@+id/favorite_btn"
             app:layout_constraintEnd_toEndOf="@id/art_view"
             app:layout_constraintTop_toTopOf="@id/art_view"
-            android:src="@drawable/round_like_false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/like" />

@@ -28,18 +28,18 @@ data class FavoritesEntity(
 
     companion object {
 
-        fun toFavoriteEntity(artwork: Artwork): FavoritesEntity {
+        fun toFavoriteEntity(art: Art): FavoritesEntity {
 
-            val title = artwork.title.orEmpty()
-            val date = artwork.dateDisplay.orEmpty()
-            val artist = artwork.artistTitle.orEmpty()
+            val title = art.title
+            val date = art.date
+            val artist = art.artist
 
             return FavoritesEntity(
-                id = artwork.id,
+                id = art.id,
                 title = title,
                 date = date,
                 artist = artist,
-                imageId = artwork.imageId!!,
+                imageId = art.imageId,
                 isFavorite = true
             )
         }

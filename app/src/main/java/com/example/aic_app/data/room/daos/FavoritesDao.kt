@@ -1,6 +1,7 @@
 package com.example.aic_app.data.room.daos
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import com.example.aic_app.data.room.FAVORITES_TABLE_NAME
 import com.example.aic_app.data.room.entities.FavoritesEntity
@@ -11,6 +12,8 @@ private const val TABLE = FAVORITES_TABLE_NAME
 @Dao
 interface FavoritesDao {
 
+    @Insert
+    suspend fun addArt(favoritesEntity: FavoritesEntity)
     @Query("SELECT * FROM $TABLE")
     fun getAll(): Flow<List<FavoritesEntity>>
 

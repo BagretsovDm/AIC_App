@@ -31,10 +31,19 @@ class ArtworkDetailFragment : Fragment(R.layout.fragment_details) {
         setupObservers()
 
         binding!!.favoriteBtn.setOnClickListener {
-            viewModel.updateArt()
-            Toast.makeText(requireContext(), "Favorite", Toast.LENGTH_SHORT).show()
-        }
 
+            Toast.makeText(
+                requireContext(),
+                if (!it.isSelected) {
+                    viewModel.addToFavorites()
+                    "Added to favorites!"
+                } else {
+                    viewModel.removeFromFavorites()
+                    "Remove from favorites"
+                },
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     private fun setupObservers() {
@@ -48,10 +57,7 @@ class ArtworkDetailFragment : Fragment(R.layout.fragment_details) {
         }
 
         viewModel.isFavorite.observe(viewLifecycleOwner) {
-            binding!!.favoriteBtn.setImageResource(
-                if (it) R.drawable.round_like_true
-                else R.drawable.round_like_false
-            )
+            binding!!.favoriteBtn.isSelected = it
         }
     }
 

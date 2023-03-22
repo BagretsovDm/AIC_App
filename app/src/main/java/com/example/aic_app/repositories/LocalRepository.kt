@@ -27,6 +27,10 @@ class LocalRepository @Inject constructor(
         return artworks.getById(id)
     }
 
+    suspend fun addFavorite(favoritesEntity: FavoritesEntity) {
+        favorites.addArt(favoritesEntity)
+    }
+
     fun getAllFavorites(): Flow<List<FavoritesEntity>> {
         return favorites.getAll()
     }
